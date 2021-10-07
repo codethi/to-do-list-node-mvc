@@ -1,0 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica;
+}
+
+body {
+  background-color: #202024;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  background-color: #005290; /* Altera a cor de fundo */
+  padding: 3rem; /* Adiciona um espaçamento interno */
+  margin: 0.5rem; /* Adiciona um espaçamento externo */
+  color: white; /* Cor do texto */
+  text-align: center; /* Alinhamento dos itens no centro da tela */
+}
+
+h1 {
+  padding-bottom: 3rem;
+}
+
+input {
+  margin: 0; /* Retira as margens */
+  border: none; /* Retira todas as bordas */
+  border-radius: 0; /* Retira todo arredondamento padrão das bordas */
+  width: 75%; /* Faz ele ocupar 75% da largura do article */
+  padding: 0.6rem; /* Espaçamento interno */
+  font-size: 1rem; /* Tamanho da fonte dentro do input */
+  outline: none; /* Tira toda borda quando ele for focado */
+  background-color: #202024;
+  color: #fff;
+}
+
+#addBtn {
+  padding: 0.6rem; /* Espaçamento interno */
+  width: 25%; /* Faz ele ocupar 25% da largura do article */
+  background: #202024; /* Altera a cor de fundo */
+  color: rgb(109, 109, 109); /* Cor do texto */
+  text-align: center; /* Alinhamento do texto no centro */
+  font-size: 1.2rem; /* Tamanho da fonte */
+  cursor: pointer; /* Garantir que o cursor do mouse ao passar por ele será de click */
+  transition: .7s; /* Tempo de transição para quando realizarmos algum efeito no botão*/
+  border-radius: 0; /* Retira todo arredondamento padrão das bordas */
+  border: none; /* Retira todas as bordas */
+  border-left: solid .1rem #555;
+  outline: none; /* Tira toda borda quando ele for clicado */
+}
+
+#addBtn:hover {
+  background-color: #004e14; /* Quando passar o mouse no botão, muda o background */
+  color: #fff; 
+}
+
+@media (max-width: 504px){
+  #addBtn {
+    font-size: .7rem;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+#tasks {
+  margin: 0.5rem; /* Mesma margem do header na section que envolve a lista */
+}
+
+ul {
+  list-style: none; /* Retira os pontos da lista */
+}
+
+ul li {
+  cursor: pointer; /* Garantir que o cursor do mouse ao passar por cada item na lista será de click */
+  position: relative; /* Posição relativa ao elemento before que iremos adicionar mais em baixo */
+  padding: 12px 8px 12px 40px; /* Espaçamento na ordem: top, right, down, left */
+  background: rgb(22, 22, 24);
+  font-size: 18px;
+  transition: 0.2s;
+  color: #fff;
+}
+
+ul li:nth-child(odd) {
+  background: #272727;
+}
+
+ul li:hover {
+  background: #5a5a5a;
+}
+
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through; /* Risco em cima do texto */
+}
+
+ul li.checked::before {
+  content: "";
+  position: absolute;
+  border: #fff solid;
+  top: 10px;
+  left: 16px;
+  height: 15px;
+  width: 7px;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+  text-decoration: none;
+  color: rgb(109, 109, 109);
+}
+
+.delete:hover {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.edit {
+  position: absolute;
+  right: 3rem;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+  text-decoration: none;
+  color: rgb(109, 109, 109);
+}
+
+.edit:hover {
+  background-color: #3643f4;
+  color: #fff;
+}
+
+/* Estilos do modal */
+
+section.modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #00000080;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+section.modal div#card{
+  width: 30rem;
+  position: relative;
+  background-color: #202024;
+}
+
+section.modal div#card h2{
+  padding: 2rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+section.modal div#card a#fechar{
+  position: absolute;
+  right: 0;
+  top: .7rem;
+  font-size: 1.4rem;
+  color: #ffffff;
+  padding: 1.5rem;
+}
+
+section.modal div#card a#fechar:hover{
+  color: #ff0000;
+}
+
+section.modal div#card hr{
+  width: 90%;
+  margin: 0 auto;
+}
+
+section.modal div#card p{
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  color: #fff;
+}
+
+section.modal div#card div#btns{
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem 2rem 2rem;
+}
+
+section.modal div#card div#btns a{
+  text-decoration: none;
+  padding: .9rem;
+  width: 7rem;
+  text-align: center;
+}
+
+section.modal div#card div#btns a.btn-cancelar{
+  background-color: #202024;
+  color: #ff0101;
+  border: solid 1px #ff0101;
+  margin-right: 1rem;
+  transition: all .5s ease-out;
+  font-size: 1.1rem;
+}
+
+section.modal div#card div#btns a.btn-cancelar:hover{
+  background-color: #ff0101;
+  color: #fff;
+}
+
+section.modal div#card div#btns a.btn-apagar{
+  background-color: #202024;
+  color: #00aa2a;
+  border: solid 1px #00aa2a;
+  transition: all .5s ease-out;
+  font-size: 1.1rem;
+}
+
+section.modal div#card div#btns a.btn-apagar:hover{
+  background-color: #00aa2a;
+  color: #fff;
+}
+
+.message {
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.message-danger {
+  background-color: rgb(255, 197, 197);
+  color: #8a0000;
+}
+
+.message-success {
+  background-color: rgb(197, 255, 214);
+  color: #008a1e;
+}
+
+span#close {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  padding-left: 2rem;
+}
+
+span#close:hover {
+  color: rgb(255, 0, 0);
+}
