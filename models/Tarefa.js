@@ -5,6 +5,10 @@ const tarefaSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  feito: {
+    type: Boolean,
+    default: false,
+  },
   dataCriacao: {
     type: Date,
     default: Date.now,

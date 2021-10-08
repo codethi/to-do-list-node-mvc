@@ -72,14 +72,38 @@ ul {
   list-style: none; /* Retira os pontos da lista */
 }
 
-ul li {
-  cursor: pointer; /* Garantir que o cursor do mouse ao passar por cada item na lista será de click */
+ul li { 
   position: relative; /* Posição relativa ao elemento before que iremos adicionar mais em baixo */
-  padding: 12px 8px 12px 40px; /* Espaçamento na ordem: top, right, down, left */
+  padding: 0 8px 0 40px; /* Espaçamento na ordem: top, right, down, left */
   background: rgb(22, 22, 24);
-  font-size: 18px;
+  
   transition: 0.2s;
   color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  flex-wrap: wrap;
+}
+
+ul li a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.3rem;
+  overflow: hidden;
+}
+
+ul li span {
+  color: #ccc;
+  font-style: italic;
+  font-size: .8rem;
+  padding-left: 1rem;
+}
+
+ul li div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 ul li:nth-child(odd) {
@@ -90,28 +114,7 @@ ul li:hover {
   background: #5a5a5a;
 }
 
-ul li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through; /* Risco em cima do texto */
-}
-
-ul li.checked::before {
-  content: "";
-  position: absolute;
-  border: #fff solid;
-  top: 10px;
-  left: 16px;
-  height: 15px;
-  width: 7px;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
 .delete {
-  position: absolute;
-  right: 0;
-  top: 0;
   padding: 12px 16px 12px 16px;
   text-decoration: none;
   color: rgb(109, 109, 109);
@@ -123,9 +126,6 @@ ul li.checked::before {
 }
 
 .edit {
-  position: absolute;
-  right: 3rem;
-  top: 0;
   padding: 12px 16px 12px 16px;
   text-decoration: none;
   color: rgb(109, 109, 109);
@@ -265,3 +265,35 @@ span#close {
 span#close:hover {
   color: rgb(255, 0, 0);
 }
+
+ul li.feito-true {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through; /* Risco em cima do texto */
+}
+
+ul li a.feito-true::before {
+  content: "";
+  position: absolute;
+  border: #fff solid;
+  top: 10px;
+  left: 16px;
+  height: 15px;
+  width: 7px;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+ul li a.feito-false::before {
+  content: "";
+  position: absolute;
+  border: #fff solid;
+  top: 12px;
+  left: 10px;
+  height: 16px;
+  width: 16px;
+  border-width: 2px;
+  cursor: pointer;
+}
+

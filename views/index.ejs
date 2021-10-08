@@ -20,9 +20,11 @@
     <% }  %>
 
     <header class="header">
-        <h1>To Do List</h1>
+        
 
         <% if (tarefa==null) { %>
+
+            <h1>To Do List</h1>
 
             <form action="/add" method="post" class="flex">
                 <input type="text" name="tarefa" id="myInput" placeholder="Insira uma tarefa">
@@ -30,6 +32,8 @@
             </form>
 
         <% } else { %>
+
+            <h1>To Do List - Editar</h1>
 
             <form action="/update/<%= tarefa._id %>" method="POST" class="flex">
                 <input type="text" name="tarefa" id="myInput" value='<%= tarefa.tarefa %>'>
@@ -40,13 +44,18 @@
     </header>
 
     <section id="tasks">
-        <ul id="myUL">
+        <ul>
             <% listaTarefas.forEach((item, index)=> { %>
-                <li>
-                    <%= item.tarefa %>
-                    <a class="delete" href="/confirm/<%= item._id %>"><i class="bi bi-x-square"></i></a>
-                    <a class="edit" href="/<%= item._id %>"><i class="bi bi-pencil-square"></i></a>
-                </li>
+                <li class="feito-<%= item.feito %>">
+                    <div>
+                        <a href="/feito/<%= item._id %>" class="feito-<%= item.feito %>"> <%= item.tarefa %> </a>
+                        <span><%= item.dataCriacao.toLocaleDateString() %> às <%= item.dataCriacao.toLocaleTimeString() %></span>
+                    </div>
+                    <div>
+                        <a class="edit" href="/<%= item._id %>"><i class="bi bi-pencil-square"></i></a>
+                        <a class="delete" href="/confirm/<%= item._id %>"><i class="bi bi-x-square"></i></a>
+                    </div>
+                </li> 
             <% }) %>
         </ul>
     </section>

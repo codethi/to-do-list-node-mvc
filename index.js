@@ -60,6 +60,8 @@ app.post("/update/:id", async (req, res) => {
   try {
     const novaTarefa = req.body;
     await Tarefa.updateOne({ _id: req.params.id }, novaTarefa);
+    message = "Tarefa alterada com sucesso!";
+    type = "success"
     res.redirect("/");
   } catch (err) {
     res.status(500).send({ error: err.message });
@@ -77,11 +79,26 @@ app.get("/delete/:id", async (req, res) => {
 
   try {
     await Tarefa.deleteOne({ _id: id });
+    message = "Tarefa excluida com sucesso!";
+    type = "success"
     res.redirect("/");
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
 });
+
+app.get("/feito/:id", async (req, res) => {
+  try {
+    const tarefa = await Tarefa.findOne({ _id: req.params.id });
+
+    tarefa.feito ? tarefa.feito = false : tarefa.feito = true;
+    
+    await Tarefa.updateOne({ _id: req.params.id }, tarefa);
+    res.redirect("/");
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+})
 
 app.listen(port, () =>
   console.log(`Servidor rodando em http://localhost:${port}`)
