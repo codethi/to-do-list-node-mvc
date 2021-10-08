@@ -276,7 +276,7 @@ ul li a.feito-true::before {
   content: "";
   position: absolute;
   border: #fff solid;
-  top: 10px;
+  top: 12px;
   left: 16px;
   height: 15px;
   width: 7px;
@@ -289,7 +289,7 @@ ul li a.feito-false::before {
   content: "";
   position: absolute;
   border: #fff solid;
-  top: 12px;
+  top: 14px;
   left: 10px;
   height: 16px;
   width: 16px;
