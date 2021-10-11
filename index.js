@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const connectToDb = require("./database/db");
 const Tarefa = require("./models/Tarefa");
+require('dotenv').config()
 
 connectToDb();
 
