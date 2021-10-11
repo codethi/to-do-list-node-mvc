@@ -3,6 +3,7 @@ const path = require("path");
 const connectToDb = require("./database/db");
 const Tarefa = require("./models/Tarefa");
 require('dotenv').config()
+const moment = require('moment');
 
 connectToDb();
 
@@ -15,11 +16,18 @@ let message = "";
 let type = "";
 
 app.get("/", async (req, res) => {
+  let newDate
+
   try {
     setTimeout(() => {
       message = "";
     }, 1000);
     const listaTarefas = await Tarefa.find();
+
+    listaTarefas.forEach(item => {
+      item.dataCriacao = moment.utc(item.dataCriacao).local().format();
+    })
+    
     return res.render("index", {
       listaTarefas,
       tarefa: null,
