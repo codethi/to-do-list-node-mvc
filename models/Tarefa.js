@@ -11,7 +11,7 @@ const tarefaSchema = new mongoose.Schema({
   },
   dataCriacao: {
     type: Date,
-    default: Date.now,
+    default: Date.now('pt-BR'),
   },
 });
 
